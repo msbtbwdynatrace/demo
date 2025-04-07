@@ -3,6 +3,7 @@ package com.michalszalkowski.demo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 class MessageController {
@@ -16,8 +17,8 @@ class MessageController {
     return new Message("lorem ipsum 1: " + passkey);
   }
 
-  @GetMapping("/test2")
-  public Message test2() {
+  @GetMapping("/test2/{superpass}")
+  public Message test2(@PathVariable(required = false) String superpass) {
     String user2 = "michal";
     return new Message("lorem ipsum 2");
   }
