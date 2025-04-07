@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @RestController
 class MessageController {
@@ -12,15 +13,32 @@ class MessageController {
   private String pass = "admin123456";
   private String password = "admin123456";
 
-  @GetMapping("/test")
-  public Message test1(@RequestParam String passkey) {
-    return new Message("lorem ipsum 1: " + passkey);
+  @GetMapping("/test-0/")
+  public Message test0() {
+    return new Message("test case 0");
   }
 
-  @GetMapping("/test2/{superpass}")
-  public Message test2(@PathVariable(required = false) String superpass) {
-    String user2 = "michal";
-    return new Message("lorem ipsum 2");
+  @GetMapping("/test-1/")
+  public Message test1() {
+    String _user = "admin";
+    String _pass = "123456";
+    return new Message("test case 1");
+  }
+
+  @GetMapping("/test-2/")
+  public Message test2(@RequestParam String passkey) {
+    return new Message("test case 2 : " + passkey);
+  }
+
+  @GetMapping("/test-3/{superpass}")
+  public Message test3(@PathVariable(required = false) String superpass) {
+    return new Message("test case 3 : " + superpass);
+  }
+
+
+  @GetMapping("/test-4/")
+  public Message test4(@RequestHeader(value="User-Token") String userToken) {
+    return new Message("test case 4 : " + userToken);
   }
 
 }
