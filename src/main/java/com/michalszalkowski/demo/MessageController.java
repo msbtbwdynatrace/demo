@@ -51,4 +51,15 @@ class MessageController {
     return new Message("test case 5: " + dto.toString());
   }
 
+  @GetMapping("/test-6/")
+  public Message test6() {
+
+    String _user = "admin";
+    String _pass = "123456";
+
+    UserDto user = new UserDto(_user, _pass);
+
+    return new Message("test case 6: " + user.getPass());
+  }
+
 }
