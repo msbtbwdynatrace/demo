@@ -5,9 +5,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class MessageController {
+
+  private String user = "admin";
+  private String pass = "admin123456";
+  private String password = "admin123456";
+
   @GetMapping("/test")
-  public Message all() {
-    return new Message("lorem ipsum");
+  public Message test1() {
+    return new Message("lorem ipsum 1");
+  }
+
+  @GetMapping("/test2")
+  public Message test2() {
+    String user2 = "michal";
+    return new Message("lorem ipsum 2");
   }
 
 }
