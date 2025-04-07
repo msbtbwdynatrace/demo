@@ -1,5 +1,7 @@
 package com.michalszalkowski.demo;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +38,7 @@ class MessageController {
   }
 
   @GetMapping("/test-4/")
-  public Message test4(@RequestHeader(value="User-Token") String userToken) {
+  public Message test4(@RequestHeader(value = "User-Token") String userToken) {
     return new Message("test case 4 : " + userToken);
   }
 
@@ -46,7 +48,7 @@ class MessageController {
     String _user = "admin";
     String _pass = "123456";
 
-    TextDto dto = new TextDto(_user+":"+_pass);
+    TextDto dto = new TextDto(_user + ":" + _pass);
 
     return new Message("test case 5: " + dto.toString());
   }
@@ -60,6 +62,15 @@ class MessageController {
     UserDto userDto = new UserDto(_user, _pass);
 
     return new Message("test case 6: " + userDto.getPass());
+  }
+
+  @GetMapping("/test-7/")
+  public Message test7(@RequestHeader Map<String, String> headers) {
+    if (headers.containsKey("pass")) {
+      return new Message("test case 7 : " + headers.get("pass"));
+    } else {
+      return new Message("test case 7 : " + headers);
+    }
   }
 
 }
