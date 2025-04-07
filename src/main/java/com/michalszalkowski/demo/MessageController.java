@@ -3,6 +3,7 @@ package com.michalszalkowski.demo;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,7 +76,7 @@ class MessageController {
     }
   }
 
-  @GetMapping("/test-8/")
+  @PostMapping("/test-8/")
   public Message test8(@ModelAttribute UserForm form, Model model) {
     return new Message("test case 8" + form.getUserText() + form.getPassText());
   }
