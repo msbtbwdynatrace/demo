@@ -31,14 +31,24 @@ class MessageController {
   }
 
   @GetMapping("/test-3/{superpass}")
-  public Message test3(@PathVariable(required = false) String superpass) {
+  public Message test3(@PathVariable String superpass) {
     return new Message("test case 3 : " + superpass);
   }
-
 
   @GetMapping("/test-4/")
   public Message test4(@RequestHeader(value="User-Token") String userToken) {
     return new Message("test case 4 : " + userToken);
+  }
+
+  @GetMapping("/test-5/")
+  public Message test5() {
+
+    String _user = "admin";
+    String _pass = "123456";
+
+    TextDto dto = new TextDto(_user+":"+_pass);
+
+    return new Message("test case 5: " + dto.toString());
   }
 
 }
