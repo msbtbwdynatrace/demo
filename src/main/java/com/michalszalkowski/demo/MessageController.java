@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -78,6 +82,12 @@ class MessageController {
 
   @PostMapping("/test-8/")
   public Message test8(@ModelAttribute UserForm form, Model model) {
+    return new Message("test case 8" + form.getUserText() + form.getPassText());
+  }
+
+  @PostMapping("/test-9/")
+  public Message test9(@ModelAttribute UserForm form, Model model, HttpServletResponse response) {
+    response.addCookie(new Cookie("session", "s000111"));
     return new Message("test case 8" + form.getUserText() + form.getPassText());
   }
 
