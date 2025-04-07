@@ -3,10 +3,12 @@ package com.michalszalkowski.demo;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.ui.Model;
 
 @RestController
 class MessageController {
@@ -71,6 +73,11 @@ class MessageController {
     } else {
       return new Message("test case 7 : " + headers);
     }
+  }
+
+  @GetMapping("/test-8/")
+  public Message test8(@ModelAttribute UserForm form, Model model) {
+    return new Message("test case 8" + form.getUserText() + form.getPassText());
   }
 
 }
