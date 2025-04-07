@@ -57,9 +57,9 @@ class MessageController {
     String _user = "admin";
     String _pass = "123456";
 
-    UserDto user = new UserDto(_user, _pass);
+    UserDto userDto = new UserDto(_user, _pass);
 
-    return new Message("test case 6: " + user.getPass());
+    return new Message("test case 6: " + userDto.getPass());
   }
 
 }
