@@ -88,7 +88,7 @@ class MessageController {
   @PostMapping("/test-9/")
   public Message test9(@ModelAttribute UserForm form, Model model, HttpServletResponse response) {
     response.addCookie(new Cookie("session", "s000111"));
-    return new Message("test case 8" + form.getUserText() + form.getPassText());
+    return new Message("test case 9" + form.getUserText() + form.getPassText());
   }
 
 }
