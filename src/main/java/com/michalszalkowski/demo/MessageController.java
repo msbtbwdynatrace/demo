@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.ui.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 class MessageController {
+
+  Logger logger = LoggerFactory.getLogger("MessageController");
 
   private String user = "admin";
   private String pass = "admin123456";
@@ -24,6 +28,7 @@ class MessageController {
 
   @GetMapping("/test-0/")
   public Message test0() {
+    logger.info("Test test logger message");
     return new Message("test case 0");
   }
 
